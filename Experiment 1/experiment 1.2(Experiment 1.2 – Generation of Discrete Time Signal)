@@ -1,0 +1,22 @@
+// Generation of Discrete Time Unit Impulse Signal
+
+clc;
+clear;
+clf;
+
+// Test Parameters
+N = 21;
+n0 = 11;
+
+// Time Index
+n = 1:N;
+
+// Generate Impulse
+x_n = zeros(1, N);
+x_n(n0) = 1;
+
+// Plot
+plot2d3(n, x_n);
+xlabel("Discrete Time Index");
+ylabel("Amplitude");
+title("Discrete Time Unit Impulse Signal");
