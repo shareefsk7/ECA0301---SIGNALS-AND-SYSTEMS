@@ -1,0 +1,22 @@
+// Generation of Continuous Time Sinusoidal Signal
+
+clc;
+clear;
+clf;
+
+// Test Parameters
+f = 5;          // Frequency (Hz)
+A = 2;          // Amplitude
+phi = %pi/4;    // Phase Shift
+
+// Time Vector
+t = 0:0.001:1;
+
+// Generate Signal
+x_t = A * sin(2 * %pi * f * t + phi);
+
+// Plot
+plot(t, x_t);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Continuous Time Sinusoidal Signal");
