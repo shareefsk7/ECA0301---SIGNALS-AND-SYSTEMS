@@ -1,0 +1,27 @@
+clc;
+clear;
+clf;
+
+// Periodic Signal
+f = 1;
+A = 1;
+t = 0:0.01:2;
+x1 = A * sin(2 * %pi * f * t);
+
+// Aperiodic Signal
+a = 0.5;
+A2 = 2;
+x2 = A2 * exp(-a * t);
+
+// Plot
+subplot(2,1,1);
+plot(t,x1);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Periodic Signal");
+
+subplot(2,1,2);
+plot(t,x2);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Aperiodic Signal");
