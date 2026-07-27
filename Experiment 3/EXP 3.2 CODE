@@ -1,0 +1,20 @@
+clc;
+clear;
+
+t = -10:0.001:10;
+dt = t(2)-t(1);
+
+// Energy Signal
+x1 = exp(-2*abs(t));
+E1 = sum(abs(x1).^2)*dt;
+P1 = E1/(max(t)-min(t));
+
+// Power Signal
+x2 = cos(2*%pi*5*t);
+E2 = sum(abs(x2).^2)*dt;
+P2 = E2/(max(t)-min(t));
+
+disp("Energy of x1 = " + string(E1));
+disp("Average Power of x1 = " + string(P1));
+disp("Energy of x2 = " + string(E2));
+disp("Average Power of x2 = " + string(P2));
