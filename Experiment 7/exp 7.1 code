@@ -1,0 +1,19 @@
+clc;
+clear;
+
+t = 0:0.001:1;
+x = sin(2*%pi*5*t);
+
+fs = 20;
+ts = 0:1/fs:1;
+xs = sin(2*%pi*5*ts);
+
+// Plot
+clf;
+subplot(2,1,1);
+plot(t,x);
+xtitle("Original Continuous Signal");
+
+subplot(2,1,2);
+plot2d3(ts,xs);
+xtitle("Sampled Signal");
