@@ -1,0 +1,22 @@
+clc;
+clear;
+
+t = -5:0.01:5;
+
+// Approximate periodic impulse train
+x = zeros(t);
+for k = -4:4
+    [m,idx] = min(abs(t-k));
+    x(idx) = 1;
+end
+
+X = abs(fft(x));
+
+clf;
+subplot(2,1,1);
+plot(t,x);
+xtitle("Periodic Impulse Train");
+
+subplot(2,1,2);
+plot(X);
+xtitle("Magnitude Spectrum");
