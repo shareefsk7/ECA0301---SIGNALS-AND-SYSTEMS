@@ -1,0 +1,26 @@
+clc;
+clear;
+clf;
+
+N = 20;
+n = 0:N-1;
+
+// Unit impulse input
+x = zeros(1,N);
+x(1) = 1;
+
+// Output
+y = zeros(1,N);
+y(1) = 1;
+
+for k = 2:N
+    y(k) = 0.5*y(k-1) + x(k);
+end
+
+subplot(2,1,1);
+plot2d3(n,x);
+xtitle("Unit Impulse Input","n","Amplitude");
+
+subplot(2,1,2);
+plot2d3(n,y);
+xtitle("Impulse Response","n","Amplitude");
