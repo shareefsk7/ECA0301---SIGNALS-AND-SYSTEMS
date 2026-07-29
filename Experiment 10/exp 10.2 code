@@ -1,0 +1,34 @@
+clc;
+clear;
+close;
+
+// Signal
+n = 0:20;
+x = (0.8).^n;
+
+// Frequency axis
+w = linspace(-%pi,%pi,512);
+
+// Z-transform on unit circle (DTFT)
+X = zeros(w);
+
+for k = 1:length(w)
+    X(k) = sum(x .* exp(-%i*w(k)*n));
+end
+
+// Magnitude and phase
+mag = abs(X);
+phase = atan(imag(X),real(X));
+
+// Plots
+subplot(2,1,1);
+plot(w,mag);
+xlabel("Frequency (rad/sample)");
+ylabel("|X(e^{jw})|");
+title("Magnitude Response");
+
+subplot(2,1,2);
+plot(w,phase);
+xlabel("Frequency (rad/sample)");
+ylabel("Phase (radians)");
+title("Phase Response");
