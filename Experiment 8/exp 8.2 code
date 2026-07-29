@@ -1,0 +1,21 @@
+clc;
+clear;
+
+n = 0:20;
+x = (0.8).^n;
+
+w = linspace(-%pi,%pi,512);
+X = zeros(w);
+
+for k = 1:length(w)
+    X(k) = sum(x .* exp(-%i*w(k)*n));
+end
+
+clf;
+subplot(2,1,1);
+plot2d3(n,x);
+xtitle("Input Sequence");
+
+subplot(2,1,2);
+plot(w,abs(X));
+xtitle("Magnitude of DTFT");
