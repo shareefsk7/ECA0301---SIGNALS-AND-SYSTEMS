@@ -1,0 +1,25 @@
+clc;
+clear;
+close;
+
+// Transfer function
+num = [1 0.4];          // Numerator
+den = [1 -1.2 0.5];     // Denominator
+
+// Find zeros and poles
+z = roots(num);
+p = roots(den);
+
+// Plot unit circle
+theta = linspace(0,2*%pi,200);
+plot(cos(theta),sin(theta),'g');
+xgrid();
+
+// Plot zeros and poles
+plot(real(z),imag(z),'bo');
+plot(real(p),imag(p),'rx');
+
+xlabel("Real Part");
+ylabel("Imaginary Part");
+title("Pole-Zero Plot");
+legend("Unit Circle","Zeros","Poles");
