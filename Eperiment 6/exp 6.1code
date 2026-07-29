@@ -1,0 +1,23 @@
+clc;
+clear;
+t = -5:0.01:5;
+
+x = exp(-abs(t));
+h = (t>=0);
+
+y = conv(x,h)*0.01;
+
+ty = -10:0.01:10;
+
+clf;
+subplot(3,1,1);
+plot(t,x);
+xtitle("Input Signal x(t)");
+
+subplot(3,1,2);
+plot(t,h);
+xtitle("Impulse Response h(t)");
+
+subplot(3,1,3);
+plot(ty,y);
+xtitle("Convolution y(t)=x(t)*h(t)");
