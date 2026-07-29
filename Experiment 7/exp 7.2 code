@@ -1,0 +1,16 @@
+clc;
+clear;
+
+t = 0:0.001:2*%pi;
+
+x = sin(t);
+y = max(x,0);
+
+clf;
+subplot(2,1,1);
+plot(t,x);
+xtitle("Input Sine Wave");
+
+subplot(2,1,2);
+plot(t,y);
+xtitle("Half-Wave Rectified Signal");
