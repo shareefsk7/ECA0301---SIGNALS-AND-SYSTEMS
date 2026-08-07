@@ -1,0 +1,55 @@
+clc;
+clear;
+
+// Laplace variable
+s = poly(0,'s');
+
+// Plant parameters
+K = 1;
+tau = 120;
+L = 30;
+
+// 3rd Order Pade Approximation of e^(-30s)
+numDelay = -s^3 + 0.4*s^2 - 0.066667*s + 0.004444;
+denDelay =  s^3 + 0.4*s^2 + 0.066667*s + 0.004444;
+
+Delay = numDelay/denDelay;
+
+// Plant
+G = K/(120*s + 1);
+
+// PI Controller (tune if required)
+Kp = 4;
+Ki = 0.05;
+C = Kp + Ki/s;
+
+// Closed-loop transfer function
+CL = (C*G*Delay)/(1 + C*G*Delay);
+
+// Simulation time
+t = 0:1:1200;
+
+// Input: 5°C step at t = 60 s
+u = zeros(t);
+u(find(t>=60)) = 5;
+
+// Simulate
+y = csim(u,t,syslin('c',CL));
+
+// Plot
+clf();
+plot(t,y,'b');
+plot(t,u,'k--');
+
+upper = u + 0.5;
+lower = u - 0.5;
+
+plot(t,upper,'r--');
+plot(t,lower,'r--');
+
+xgrid();
+xlabel("Time (s)");
+ylabel("Room Temperature (°C)");
+title("PI Controlled Room Temperature");
+
+legend("Temperature","Setpoint","+0.5°C","-0.5°C");
